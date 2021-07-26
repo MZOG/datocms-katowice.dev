@@ -1,8 +1,7 @@
 import React from "react";
-import Container from "../components/container";
-import HeroPost from "../components/hero-post";
+import Layout from "../components/layout";
 import Intro from "../components/intro";
-import MoreStories from "../components/more-stories";
+import IntroBoxes from "../components/intro-boxes";
 import { HelmetDatoCms } from "gatsby-source-datocms";
 import { graphql } from "gatsby";
 
@@ -11,21 +10,11 @@ export default function Index({ data: { allPosts, site, blog } }) {
   const morePosts = allPosts.nodes.slice(1);
 
   return (
-    <Container>
+    <Layout>
       <HelmetDatoCms seo={blog.seo} favicon={site.favicon} />
       <Intro />
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-      )}
-      {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-    </Container>
+      <IntroBoxes />
+    </Layout>
   );
 }
 
@@ -48,10 +37,16 @@ export const query = graphql`
         excerpt
         date
         coverImage {
-          large: fluid(imgixParams: { fm: "jpg" }, sizes: "(max-width: 1500px) 100vw, 1500px") {
+          large: fluid(
+            imgixParams: { fm: "jpg" }
+            sizes: "(max-width: 1500px) 100vw, 1500px"
+          ) {
             ...GatsbyDatoCmsFluid
           }
-          small: fluid(imgixParams: { fm: "jpg" }, sizes: "(max-width: 760px) 100vw, (max-width: 1500px) 50vw, 700px") {
+          small: fluid(
+            imgixParams: { fm: "jpg" }
+            sizes: "(max-width: 760px) 100vw, (max-width: 1500px) 50vw, 700px"
+          ) {
             ...GatsbyDatoCmsFluid
           }
         }

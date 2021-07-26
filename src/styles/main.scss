@@ -1,0 +1,330 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+body {
+  font-family: $soehne400;
+  font-size: 1rem;
+  color: $black;
+  margin-top: 40px;
+}
+
+h1 {
+  font-family: $quincy;
+}
+
+.container {
+  padding: 0 20px;
+
+  @include mq("tablet", "min") {
+    margin: 0 auto;
+    padding: 0 10px;
+    max-width: 768px;
+  }
+
+  @include mq("tablet-wide", "min") {
+    max-width: 992px;
+  }
+
+  @include mq("desktop", "min") {
+    max-width: 1248px;
+  }
+
+  @include mq("desktop-wide", "min") {
+    max-width: 1440px;
+  }
+}
+
+header {
+  padding: 15px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: $boxShadow;
+  background: $white;
+
+  @include mq("tablet", "min") {
+    box-shadow: none;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    a {
+      text-decoration: none;
+      color: $primary;
+    }
+  }
+
+  nav {
+    .nav-button {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+
+      @include mq("tablet", "min") {
+        display: none;
+      }
+    }
+  }
+}
+
+.intro {
+  padding: 50px 0;
+
+  @include mq("tablet", "min") {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 0;
+  }
+
+  @include mq("desktop", "min") {
+    padding-top: 150px;
+  }
+
+  &-left {
+    margin-bottom: 50px;
+
+    @include mq("tablet", "min") {
+      width: calc(50% - 10px);
+      margin-bottom: 0;
+    }
+
+    @include mq("desktop", "min") {
+      width: calc(60% - 10px);
+    }
+  }
+
+  &-right {
+    text-align: center;
+    @include mq("tablet", "min") {
+      width: calc(50% - 10px);
+    }
+
+    svg {
+      max-width: 100%;
+
+      @include mq("phablet", "min") {
+        max-width: 70%;
+      }
+
+      @include mq("tablet", "min") {
+        max-width: 100%;
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2.1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: -2px;
+
+    @include mq("phablet", "min") {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    @include mq("tablet", "min") {
+      text-align: left;
+      letter-spacing: -1px;
+    }
+
+    @include mq("tablet-wide", "min") {
+      font-size: 3rem;
+    }
+
+    @include mq("desktop", "min") {
+      font-size: 4rem;
+    }
+
+    @include mq("desktop-wide", "min") {
+      font-size: 4.5rem;
+    }
+
+    span {
+      display: block;
+      font-size: 1.8rem;
+
+      @include mq("phablet", "min") {
+        font-size: 2rem;
+      }
+
+      @include mq("tablet-wide", "min") {
+        font-size: 2.3rem;
+      }
+
+      @include mq("desktop", "min") {
+        font-size: 3rem;
+      }
+
+      @include mq("desktop-wide", "min") {
+        font-size: 3.5rem;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.4;
+
+    @include mq("phablet", "min") {
+      margin-bottom: 30px;
+    }
+
+    @include mq("tablet", "min") {
+      text-align: left;
+    }
+
+    @include mq("tablet-wide", "min") {
+      font-size: 1.16rem;
+    }
+  }
+
+  &-cta {
+    text-align: center;
+
+    @include mq("tablet", "min") {
+      text-align: left;
+    }
+
+    a {
+      -webkit-appearance: none;
+      display: inline-flex;
+      justify-content: space-between;
+      background-color: $primary;
+      align-items: center;
+      text-decoration: none;
+      color: $white;
+      padding: 12px 20px 13px 20px;
+      border: 1px dashed transparent;
+      border-radius: 40px;
+      box-shadow: $boxShadow;
+
+      @include mq("tablet-wide", "min") {
+        padding: 14px 25px 15px 25px;
+      }
+
+      svg {
+        width: 20px;
+        margin-left: 20px;
+      }
+
+      &:hover {
+        border-color: $primary;
+        background-color: $white;
+        color: $primary;
+      }
+    }
+  }
+}
+
+.intro-boxes {
+  @include mq("phablet", "min") {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @include mq("desktop", "min") {
+    align-items: flex-start;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+
+    @include mq("phablet", "min") {
+      width: calc(50% - 15px);
+    }
+
+    @include mq("tablet-wide", "min") {
+      width: calc(25% - 20px);
+    }
+
+    // &:nth-child(3),
+    // &:nth-child(4) {
+    //   @include mq("desktop", "min") {
+    //     margin-top: 50px;
+    //   }
+    // }
+  }
+
+  .box {
+    box-shadow: $boxShadow;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    background: $white;
+
+    @include mq("desktop", "min") {
+      padding: 25px;
+    }
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+      color: $white;
+      cursor: pointer;
+
+      .box-header_arrow {
+        svg {
+          stroke: $primary;
+          background: $white;
+        }
+      }
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h2 {
+        font-family: $soehne700;
+        font-size: 1.3rem;
+
+        @include mq("desktop", "min") {
+          font-size: 1.5rem;
+        }
+      }
+
+      &_arrow {
+        svg {
+          width: 20px;
+          background: $primary;
+          box-sizing: content-box;
+          padding: 10px;
+          border-radius: 40px;
+          stroke: white;
+        }
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+  }
+}
+
+// Utils: all helpers classes
+.primary-color {
+  color: $primary;
+}
